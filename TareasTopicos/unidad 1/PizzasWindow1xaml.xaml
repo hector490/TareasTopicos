@@ -1,0 +1,105 @@
+﻿<Window x:Class="TareasTopicos.unidad_1.PizzasWindow1xaml"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TareasTopicos.unidad_1"
+        mc:Ignorable="d"
+        Title="PizzasWindow1xaml" Height="450" Width="800">
+    <Window.DataContext>
+        <local:Pizzas></local:Pizzas>
+    </Window.DataContext>
+    <Window.Resources>
+        <Style TargetType="Button">
+            <Setter Property="Background" Value="#ff707a"></Setter>
+            <Setter Property="Foreground" Value="White"></Setter>
+            <Setter Property="FontSize" Value="16"></Setter>
+            <Setter Property="Margin" Value="10"></Setter>
+            <Setter Property="Padding" Value="5"></Setter>
+            <Setter Property="FontSize" Value="15"></Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Foreground" Value="Red"></Setter>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style TargetType="ComboBox">
+            <Setter Property="Margin" Value="10"></Setter>
+            <Setter Property="Foreground" Value="Black"></Setter>
+            <Setter Property="FontSize" Value="20"></Setter>
+
+
+
+        </Style>
+    </Window.Resources>
+
+    <Grid  >
+        <TextBlock FontSize="35" Foreground="White" Background="#faad70" HorizontalAlignment="Stretch" TextAlignment="Center" FontWeight="Bold">Pizzeria Rubio</TextBlock>
+        <Grid Margin="15 45 15 10" Background="White">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" ></RowDefinition>
+                <RowDefinition Height="Auto" ></RowDefinition>
+                <RowDefinition Height="Auto" ></RowDefinition>
+                <RowDefinition Height="Auto" ></RowDefinition>
+                <RowDefinition Height="Auto" ></RowDefinition>
+                <RowDefinition Height="Auto" ></RowDefinition>
+                <RowDefinition Height="Auto" ></RowDefinition>
+                <RowDefinition Height="*" ></RowDefinition>
+            </Grid.RowDefinitions>
+
+            <TextBlock Text="Tamaño:" FontSize="25" Margin="10" ></TextBlock>
+            <ComboBox Text="{Binding Tamaño}" Grid.Row="1" >
+                <ComboBoxItem Content="Individual" ></ComboBoxItem>
+                <ComboBoxItem Content="Mediana" ></ComboBoxItem>
+                <ComboBoxItem Content="Grande" ></ComboBoxItem>
+            </ComboBox>
+
+            <TextBlock Text="Número de ingredientes (1-6):" FontSize="25" Margin="10" Grid.Row="2" ></TextBlock>
+
+            <TextBox Text="{Binding IngredientesExtra}" Grid.Row="3" Margin="10"  FontSize="20" >
+                <TextBox.Style>
+                    <Style TargetType="TextBox">
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Tamaño}" Value="Individual">
+                                <Setter Property="IsEnabled" Value="False" ></Setter>
+                                <Setter Property="Text" Value="1" ></Setter>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </TextBox.Style>
+            </TextBox>
+
+            <CheckBox IsChecked="{Binding QuesoExtra}"  Grid.Row="4" FontSize="20">Queso Extra (+15)
+                <CheckBox.Style>
+                    <Style TargetType="CheckBox">
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Tamaño}" Value="Individual">
+                                <Setter Property="IsEnabled" Value="False" ></Setter>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </CheckBox.Style>
+            </CheckBox>
+
+            <CheckBox IsChecked="{Binding Masa}" Name="MasaSuperdelgadaCheck" Grid.Row="5" FontSize="20">Masa Superdelgada (+40)
+                <CheckBox.Style>
+                    <Style TargetType="CheckBox">
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Tamaño}" Value="Individual">
+                                <Setter Property="IsEnabled" Value="False" />
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding Tamaño}" Value="Mediana">
+                                <Setter Property="IsEnabled" Value="False" />
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </CheckBox.Style>
+            </CheckBox>
+            <TextBlock Text="{Binding Precio, StringFormat='total $0.00'}"   VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="25" FontWeight="Bold" Margin="10" Grid.Row="7" />
+
+            <Button Command="{Binding CalcularTotalCommand}" Grid.Row="6">Calcular Precio</Button>
+
+        </Grid>
+    </Grid>
+</Window>
