@@ -20,9 +20,9 @@
             </StackPanel>
 
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                <Button Content="✅ Sí, eliminar" Command="{Binding EliminarCommand}" Background="#ff3333" Foreground="White" FontWeight="Bold" Width="140" Height="40"></Button>
+                <Button Content="✅ Sí, eliminar" Command="{Binding EliminarCommand}" Background="#ff3333" Foreground="White" FontWeight="Bold" Width="140" Height="40" Margin="30"></Button>
 
-                <Button Content="❌ Cancelar" Command="{Binding CancelarCommand}" Background="#555555" Foreground="White" FontWeight="Bold" Width="100" Height="40"></Button>
+                <Button Content="❌ Cancelar" Command="{Binding CancelarCommand}" Background="#555555" Foreground="White" FontWeight="Bold" Width="140" Height="40"></Button>
             </StackPanel>
         </StackPanel>
     </Grid>
