@@ -1,0 +1,53 @@
+﻿<Window x:Class="TareasTopicos.unidad_1.Hamburguesas"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TareasTopicos.unidad_1"
+        mc:Ignorable="d"
+        Title="Hamburguesas" Height="450" Width="800" Background="DarkRed">
+    <StackPanel VerticalAlignment="Top">
+        <TextBlock FontFamily="Consolas" FontSize="30" Foreground="Yellow"
+                       HorizontalAlignment="Center">HAMBURGUESAS EL CORRAL</TextBlock>
+        <TextBlock FontFamily="Consolas" FontSize="18" Foreground="White"
+                       HorizontalAlignment="Center">LA MEJOR CARNE 100% DE RES - SERVIDA CON PAPAS FRITAS O AROS DE CEBOLLA</TextBlock>
+        <UniformGrid Columns="2" Background="White" Height="360" Margin="5">
+            <Image Margin="15">
+                <Image.Style>
+                    <Style TargetType="Image">
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding IsChecked, ElementName=Sola}" Value="True">
+                                <Setter Property="Source" Value="https://www.vhv.rs/dpng/d/535-5359946_hamburguesa-bacon-clasica-hamburguesa-imagen-de-una-hamburguesa.png"></Setter>
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding IsChecked, ElementName=Papas}" Value="True">
+                                <Setter Property="Source" Value="https://i.pinimg.com/474x/b2/27/1f/b2271f232bc9e6e311c6d4ba9461d705.jpg"></Setter>
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding IsChecked, ElementName=Aros}" Value="True">
+                                <Setter Property="Source" Value="https://images.squarespace-cdn.com/content/v1/5e63c2bc9849a424aa03f243/073d99fc-6aaa-4313-b134-7ba8c6d59e01/hamburguesas+y+aros+de+cebolla.png"></Setter>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Image.Style>
+            </Image>
+
+            <StackPanel Margin="15">
+                <StackPanel.Resources>
+                    <Style TargetType="RadioButton">
+                        <Style.Triggers>
+                            <Trigger Property="IsChecked" Value="True">
+                                <Setter Property="FontWeight" Value="Bold"></Setter>
+                                <Setter Property="Foreground" Value="DarkRed"></Setter>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </StackPanel.Resources>
+                <TextBlock FontSize="25" Margin="10" HorizontalAlignment="Center"
+                               Foreground="DarkRed">¿Cómo la prefieres?</TextBlock>
+
+                <RadioButton Margin="5" x:Name="Sola" IsChecked="True">Sola</RadioButton>
+                <RadioButton Margin="5" x:Name="Papas">Con Papas Fritas</RadioButton>
+                <RadioButton Margin="5" x:Name="Aros">Con Aros de Cebolla</RadioButton>
+            </StackPanel>
+        </UniformGrid>
+    </StackPanel>
+</Window>
