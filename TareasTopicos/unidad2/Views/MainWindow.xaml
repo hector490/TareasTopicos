@@ -1,0 +1,67 @@
+﻿<Window x:Class="TareasTopicos.unidad2.Views.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TareasTopicos.unidad2.Views"
+        mc:Ignorable="d"
+        xmlns:views="clr-namespace:InventarioVideojuegos.Views"
+        xmlns:viewmodel="clr-namespace:InventarioVideojuegos.ViewModels"
+        Title="MainWindow" Height="450" Width="800">
+    <Window.DataContext>
+        <viewmodel:InventarioViewModel></viewmodel:InventarioViewModel>
+    </Window.DataContext>
+    <Grid>
+        <views:ListaVideojuegosView>
+            <views:ListaVideojuegosView.Style>
+                <Style TargetType="ContentControl">
+                    <Setter Property="Visibility" Value="Collapsed"></Setter>
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding Vista}" Value="Lista">
+                            <Setter Property="Visibility" Value="Visible"></Setter>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </views:ListaVideojuegosView.Style>
+        </views:ListaVideojuegosView>
+
+        <views:AgregarView>
+            <views:AgregarView.Style>
+                <Style TargetType="ContentControl">
+                    <Setter Property="Visibility" Value="Collapsed"></Setter>
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding Vista}" Value="Agregar">
+                            <Setter Property="Visibility" Value="Visible"></Setter>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </views:AgregarView.Style>
+        </views:AgregarView>
+
+        <views:EditarView>
+            <views:EditarView.Style>
+                <Style TargetType="ContentControl">
+                    <Setter Property="Visibility" Value="Collapsed"></Setter>
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding Vista}" Value="Editar">
+                            <Setter Property="Visibility" Value="Visible"></Setter>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </views:EditarView.Style>
+        </views:EditarView>
+
+        <views:EliminarView>
+            <views:EliminarView.Style>
+                <Style TargetType="ContentControl">
+                    <Setter Property="Visibility" Value="Collapsed"></Setter>
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding Vista}" Value="Eliminar">
+                            <Setter Property="Visibility" Value="Visible"></Setter>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </views:EliminarView.Style>
+        </views:EliminarView>
+    </Grid>
+</Window>
